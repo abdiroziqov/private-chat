@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div class="flex items-baseline justify-center min-h-screen gap-5">
-      <ChatMain :user="'User 1'" :tokenUser="firstToken" />
-      <ChatMain :token-user="secondToken" :user="'User 2'" />
-    </div>
+  <div class="flex items-center justify-center min-h-screen gap-5">
+    <ChatMain :user="'User 1'" :tokenUser="firstToken" />
+    <ChatMain :token-user="secondToken" :user="'User 2'" />
   </div>
 </template>
 <script setup lang="ts">
