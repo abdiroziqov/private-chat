@@ -21,7 +21,6 @@ export function useChat(token: string, options: UseChatOptions = {}) {
 
   const connect = () => {
     if (reconnectAttempts.value >= maxReconnectAttempts) {
-      console.warn('Max reconnect attempts reached.')
       return
     }
 
@@ -39,12 +38,10 @@ export function useChat(token: string, options: UseChatOptions = {}) {
       const { data, action } = eventData
       if (action === 'get_private_chat_list') {
         memberId.value = eventData?.results[0]?.member?.id
-        console.log('member id: ', memberId.value)
       }
       if (action === 'send_message_to_chat') {
         messages.value.push(data)
       }
-      console.log('Message received:', data)
     }
 
     socket.value.onerror = (error) => {
