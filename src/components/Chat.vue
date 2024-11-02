@@ -3,7 +3,6 @@
     class="flex justify-end"
     :class="[message.sender_id == userId ? 'flex-row-reverse' : 'flex-row']"
   >
-    <pre class="text-white">userId{{ message.sender_id }}</pre>
     <div
       class="bg-blue-600 w-fit py-0.5 px-3"
       :class="[
