@@ -11,8 +11,8 @@
           : 'bg-[#33cd59] rounded-tl-xl rounded-bl-lg rounded-tr-lg',
       ]"
     >
-      <h2 class="text-white text-right font-bold">{{ message.sender_name }}</h2>
-      <p class="text-white leading-none">{{ message.message }}</p>
+      <h2 class="text-white font-semibold">{{ message.sender_name }}</h2>
+      <p class="text-white">{{ message.message }}</p>
     </div>
   </div>
 </template>

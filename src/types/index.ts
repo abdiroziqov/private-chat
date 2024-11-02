@@ -11,6 +11,7 @@ declare interface IChatSendMessage {
     chat_room_id: number
     message: string
     reply_message?: {
+      user_id: number
       id: number
       message_unique_id: number
       message: string
