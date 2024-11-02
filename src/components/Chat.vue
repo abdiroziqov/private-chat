@@ -4,7 +4,7 @@
     :class="[message.sender_id == userId ? 'flex-row-reverse' : 'flex-row']"
   >
     <div
-      class="bg-blue-600 w-fit py-0.5 px-3"
+      class="w-fit py-0.5 px-3"
       :class="[
         message.sender_id == userId
           ? 'bg-[#262629] rounded-tr-xl rounded-br-lg rounded-tl-lg'
@@ -19,7 +19,6 @@
 <script setup lang="ts">
 defineProps<{
   message: IMessage
+  userId: number
 }>()
-
-const userId = 27
 </script>

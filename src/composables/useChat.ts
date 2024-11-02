@@ -17,6 +17,7 @@ export function useChat(token: string, options: UseChatOptions = {}) {
   const messages = ref<IMessage[]>([])
   const isConnected = ref(false)
   const reconnectAttempts = ref(0)
+  const memberId = ref<number>(0)
 
   const connect = () => {
     if (reconnectAttempts.value >= maxReconnectAttempts) {
@@ -34,7 +35,12 @@ export function useChat(token: string, options: UseChatOptions = {}) {
     }
 
     socket.value.onmessage = (event) => {
-      const { data, action } = JSON.parse(event.data)
+      let eventData = JSON.parse(event.data)
+      const { data, action } = eventData
+      if (action === 'get_private_chat_list') {
+        memberId.value = eventData?.results[0]?.member?.id
+        console.log('member id: ', memberId.value)
+      }
       if (action === 'send_message_to_chat') {
         messages.value.push(data)
       }
@@ -80,5 +86,6 @@ export function useChat(token: string, options: UseChatOptions = {}) {
     sendEvent,
     messages,
     isConnected,
+    memberId,
   }
 }

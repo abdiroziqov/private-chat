@@ -8,7 +8,12 @@
       </div>
 
       <div class="h-[510px] w-full px-3 space-y-2">
-        <Chat v-for="message in messages" :key="message?.sender_id" :message />
+        <Chat
+          v-for="message in messages"
+          :key="message?.sender_id"
+          :message
+          :userId="memberId"
+        />
       </div>
 
       <div class="flex items-center gap-2 overflow-y-auto px-2.5">
@@ -35,13 +40,15 @@ import { ref } from 'vue'
 
 import Chat from '@/components/Chat.vue'
 import { useChat } from '@/composables/useChat'
+
 const props = defineProps<{
   user: string
   tokenUser: string
 }>()
 
 const message = ref('')
-const { sendEvent, messages } = useChat(props.tokenUser)
+const { sendEvent, messages, memberId } = useChat(props.tokenUser)
+
 function send(e: Event) {
   if (e) e.preventDefault()
   if (!message.value) return
